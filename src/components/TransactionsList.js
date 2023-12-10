@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
 import Transaction from "./Transaction";
-import AddTransactionForm from "./AddTransactionForm";
+import AddTransactionForm from "./AddTransactionForm"; 
 
 function TransactionsList({ handleSearch, searchTerm }) {
   const [transactionsData, setTransactionsData] = useState([]);
@@ -50,12 +50,30 @@ function TransactionsList({ handleSearch, searchTerm }) {
         return response.json();
       })
       .then((data) => {
-        setTransactionsData([...transactionsData, data]); // Update the local state with the new transaction
-        applySearchFilter([...transactionsData, data]); // Update filtered transactions as well
+        setTransactionsData([...transactionsData, data]); //Update state with the new transaction
+        applySearchFilter([...transactionsData, data]); //Update filtered transactions
         console.log("New transaction added:", data);
       })
       .catch((error) => {
         console.error("Error adding new transaction:", error);
+      });
+  };
+
+  const deleteTransaction = (id) => {
+    // Delete the transaction from the backend using the unique id
+    fetch(`http://localhost:8001/transactions/${id}`, {
+      method: "DELETE",
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        setTransactionsData(transactionsData.filter((transaction) => transaction.id !== id));
+        applySearchFilter(transactionsData.filter((transaction) => transaction.id !== id));
+        console.log("Transaction deleted successfully!");
+      })
+      .catch((error) => {
+        console.error("Error deleting transaction:", error);
       });
   };
 
@@ -77,18 +95,24 @@ function TransactionsList({ handleSearch, searchTerm }) {
             <th>
               <h3 className="ui center aligned header">Amount</h3>
             </th>
+            <th>
+              <h3 className="ui center aligned header">Actions</h3>
+            </th>
           </tr>
           {filteredTransactions.map((transaction) => (
             <Transaction
               key={transaction.id}
+              id={transaction.id}
               date={transaction.date}
               description={transaction.description}
               category={transaction.category}
               amount={transaction.amount}
+              onDelete={deleteTransaction}
             />
           ))}
         </tbody>
       </table>
+      <h4>©<i>Page Created by Frank Mwaisaka</i></h4>
     </div>
   );
 }

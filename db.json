@@ -113,53 +113,11 @@
       "id": 16
     },
     {
-      "date": "",
-      "description": "",
-      "category": "",
-      "amount": "",
-      "id": 17
-    },
-    {
-      "date": "2023-12-09",
-      "description": "Cash Depost",
-      "category": "Home use",
-      "amount": "20000000",
-      "id": 18
-    },
-    {
-      "date": "2023-12-16",
-      "description": "Bank Transfer",
-      "category": "Fees",
-      "amount": "10000000",
-      "id": 19
-    },
-    {
       "date": "2023-12-11",
       "description": "Pesa Link Transfer",
       "category": "Rent",
       "amount": "20000",
       "id": 20
-    },
-    {
-      "date": "2023-12-11",
-      "description": "Cash Depost",
-      "category": "Fuel",
-      "amount": "1000",
-      "id": 21
-    },
-    {
-      "date": "2023-12-25",
-      "description": "Christmas Money",
-      "category": "Home use",
-      "amount": "50000",
-      "id": 22
-    },
-    {
-      "date": "2023-12-20",
-      "description": "Fuel Money",
-      "category": "Support",
-      "amount": "4000",
-      "id": 23
     },
     {
       "date": "2023-12-26",
@@ -174,6 +132,13 @@
       "category": "Breakfast",
       "amount": "500",
       "id": 25
+    },
+    {
+      "date": "2023-12-14",
+      "description": "Dinner Money",
+      "category": "Support",
+      "amount": "500",
+      "id": 26
     }
   ]
 }

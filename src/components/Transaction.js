@@ -1,3 +1,4 @@
+import React from 'react';
 function Transaction({ id, date, description, category, amount, onDelete }) {
   const handleDelete = () => {
     onDelete(id);
